@@ -1,0 +1,25 @@
+<div class="container">
+  <table class="table table-bordered table-inverse">
+    <tr>
+      <th>Provider Name</th>
+      <th>Type</th>
+      <th>Address</th>
+      <th>City</th>
+      <th class="text-right">Purchase Price</th>
+    </tr>
+    <tr *ngFor="let provider of providers">
+      <td>
+        {{provider.name}}
+      </td>
+      <td>
+        {{provider.type}}
+      </td>
+      <td>
+        {{provider.address}}
+      </td>
+      <td>
+        {{provider.city}}
+      </td>
+    </tr>
+  </table>
+</div>
