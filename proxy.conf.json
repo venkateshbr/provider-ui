@@ -1,6 +1,6 @@
 {
 	"/server": {
-		"target": "http://localhost:8080",
+		"target": "https://provider-001.cfapps.io/",
 		"secure": false,
     "changeOrigin": true,
     "logLevel": "debug",

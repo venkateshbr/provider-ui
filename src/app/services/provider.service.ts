@@ -17,6 +17,7 @@ export class ProviderService {
   }
 
   getProvider(id: number){
+    console.log("/server/api/v1/providers/"+id);
     return this.http.get('/server/api/v1/providers/' + id);
   }
 

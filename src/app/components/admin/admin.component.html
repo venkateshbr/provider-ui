@@ -1,3 +1,5 @@
+<div style="text-align: center"><h2>List of Registered Providers</h2></div>
+
 <div class="container">
   <table class="table table-bordered table-inverse">
     <tr>
@@ -5,11 +7,10 @@
       <th>Type</th>
       <th>Address</th>
       <th>City</th>
-      <th class="text-right">Purchase Price</th>
     </tr>
     <tr *ngFor="let provider of providers">
       <td>
-        {{provider.name}}
+        <a [routerLink]="['/admin/provider',provider.id]">{{provider.name}}</a>
       </td>
       <td>
         {{provider.type}}
