@@ -13,12 +13,18 @@ export class ProviderService {
   constructor(private http:HttpClient) { }
 
   getProviders(){
-    return this.http.get('/server/api/v1/providers');
+    let token = localStorage.getItem('access_token');    
+    return this.http.get('/server/api/v1/providers',
+    {headers: new HttpHeaders().set('Authorization','Bearer '+token)}
+  );
   }
 
   getProvider(id: number){
+    let token = localStorage.getItem('access_token'); 
     console.log("/server/api/v1/providers/"+id);
-    return this.http.get('/server/api/v1/providers/' + id);
+    return this.http.get('/server/api/v1/providers/' + id,
+    {headers: new HttpHeaders().set('Authorization','Bearer '+token)}
+  );
   }
 
   createProviderRegistration(provider){
