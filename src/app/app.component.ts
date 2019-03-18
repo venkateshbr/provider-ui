@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { AuthService } from './services/auth.service';
 
 @Component({
@@ -13,4 +13,5 @@ export class AppComponent {
     authService.handleAuthentication();
   }
 
+  
 }

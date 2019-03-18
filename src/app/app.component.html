@@ -1,7 +1,63 @@
-<div style="text-align: center">
-  <h1>
-    Provider Management System
-  </h1>
-</div>
+<mat-sidenav-container>
+    <mat-sidenav #sidenav role="navigation">
+      <mat-toolbar color="primary">
+        <div>Menu</div>
+      </mat-toolbar>
 
-<router-outlet></router-outlet>
+      <mat-nav-list color="primary">
+        <a mat-list-item>
+          <mat-icon class="icon">input</mat-icon>
+          <span class="label">Login</span>
+        </a>
+        <a mat-list-item routerLink="/" (click)="sidenav.toggle()">
+          <mat-icon class="icon">create_new_folder</mat-icon>
+          <span class="label">New Provider</span>
+        </a>
+        <a mat-list-item routerLink="/providers" (click)="sidenav.toggle()">
+          <mat-icon class="icon">search</mat-icon>
+          <span class="label">Search Providers</span>
+        </a>
+        <a mat-list-item type="button">
+          <mat-icon class="icon">input</mat-icon>
+          <span class="label">LogOut</span>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content role="main">
+      <mat-toolbar color="primary">
+        <div>
+          <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+          </button>
+        </div>
+        <div>
+            Provider Management
+        </div>
+        <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
+            <ul fxLayout fxLayoutGap="10px" class="navigation-items">
+              <li>
+                <a>
+                  <mat-icon class="icon">exit_to_app</mat-icon>&nbsp;
+                   <span class="label">Login</span>
+                </a>
+              </li>
+              <li>
+                <a routerLink="/">
+                  <mat-icon class="icon">home</mat-icon>&nbsp;
+                  <span class="label">Home</span>
+                </a>
+              </li>
+              <li>
+                <a>
+                  <mat-icon class="icon">power_settings_new</mat-icon>&nbsp;
+                  <span class="label">LogOut</span>
+                </a>
+              </li>
+            </ul>
+          </div>   
+      </mat-toolbar>
+      <main>
+        <router-outlet></router-outlet>
+      </main>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

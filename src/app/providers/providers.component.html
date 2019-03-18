@@ -1,0 +1,138 @@
+<div class='card'>
+  <div class='card-header'>
+    Find Provider
+  </div>
+  <div class='card-body'></div>
+  <form [formGroup]="providerSearchForm" (ngSubmit)="findProvider()" class="provider-form" fxLayout.xs="column" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="5%">
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Provider Number" formControlName="number" value="{{ providerNumber }}">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <input matInput placeholder="Provider Name" formControlName="name" value="{{ providerName }}">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <input matInput placeholder="City" formControlName="city" value="{{ providerCity }}">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <input matInput placeholder="Pincode" formControlName="pin" value="{{ providerPin }}" >
+    </mat-form-field>
+    <button type="submit" mat-icon-button><mat-icon>search</mat-icon></button>
+  </form>
+</div>
+<div class='card'>  
+  <div class='card-body'>
+    <div class='table-responsive'>
+
+      <mat-expansion-panel *ngFor='let provider of providers'>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <p class="h6">{{ provider.number }}</p>
+          </mat-panel-title>
+          <mat-panel-description>
+            {{ provider.basic.name }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="table-responsive">
+          <mat-tab-group>
+            <mat-tab label="Basic">
+              <div class="table-responsive">
+                <table class="table">
+                  <tr>
+                    <th>First Name</th>
+                    <td>{{ provider.basic.first_name }}</td>
+                  </tr>
+                  <tr>
+                    <th>Last Name</th>
+                    <td>{{ provider.basic.last_name }}</td>
+                  </tr>
+                  <tr>
+                    <th>Gender</th>
+                    <td>{{ provider.basic.gender }}</td>
+                  </tr>
+                  <tr>
+                    <th>Credential</th>
+                    <td>{{ provider.basic.credential }}</td>
+                  </tr>
+                  <tr>
+                    <th>Status</th>
+                    <td>{{ provider.basic.status }}</td>
+                  </tr>
+                  <tr>
+                    <th>Type</th>
+                    <td>{{ provider.enumeration_type }}</td>
+                  </tr>
+                </table>
+              </div>
+            </mat-tab>
+            <mat-tab label="Taxonomy">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Code</th>
+                      <th>Description</th>
+                      <th>License</th>
+                      <th>Primary</th>
+                      <th>State</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor='let taxonomy of provider.taxonomies'>
+                      <td>
+                        {{ taxonomy.code }}
+                      </td>
+                      <td>{{ taxonomy.desc }}</td>
+                      <td>{{ taxonomy.license }}</td>
+                      <td>{{ taxonomy.primary }}</td>
+                      <td>{{ taxonomy.state }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+            </mat-tab>
+            <mat-tab label="Address" *ngIf='provider.addresses && provider.addresses.length'>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Address 1</th>
+                      <th>Address 2</th>
+                      <th>Address Purpose</th>
+                      <th>Address Type</th>
+                      <th>City</th>
+                      <th>State</th>
+                      <th>Country</th>
+                      <th>Postal Code</th>
+                      <th>Telephone Number</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor='let addr of provider.addresses'>
+                      <td>{{ addr.address_1 }}</td>
+                      <td>{{ addr.address_2 }}</td>
+                      <td>{{ addr.address_purpose }}</td>
+                      <td>{{ addr.address_type }}</td>
+                      <td>{{ addr.city }}</td>
+                      <td>{{ addr.state }}</td>
+                      <td>{{ addr.country_name }}</td>
+                      <td>{{ addr.postal_code }}</td>
+                      <td>{{ addr.telephone_number }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+            </mat-tab>
+          </mat-tab-group>
+
+        </div>
+
+      </mat-expansion-panel>
+
+    </div>
+  </div>
+</div>
+<div *ngIf='errorMessage' class='alert alert-danger'>
+  Error: {{ errorMessage }}
+</div>

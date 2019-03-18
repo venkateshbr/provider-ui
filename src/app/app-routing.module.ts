@@ -5,6 +5,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ViewRegistrationComponent } from './components/view-registration/view-registration.component';
 import { CallbackComponent } from './components/callback/callback.component';
 import { AuthGuard } from './services/auth.guard';
+import { ProvidersComponent } from './providers/providers.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: 'callback',
     component: CallbackComponent
+  },
+  {
+    path: 'providers',
+    component: ProvidersComponent
   }
 
 ];
